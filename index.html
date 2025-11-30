@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaushikee, Yeh Tumhare Liye Hai!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8c0c0; /* Light Pink */
+            color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 6px solid #ffaa00;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #880e4f;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .ticket-detail {
+            background-color: #fffde7;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 5px solid #ff5722;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ticket-detail strong {
+            color: #5d4037;
+        }
+        .detail-value {
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+        }
+        /* New Styles for Input and Button */
+        #redeem-input {
+            border: 2px solid #ff9800;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: right;
+            flex-grow: 1; /* Input ko poori jagah dene ke liye */
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        #redeem-btn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        #redeem-btn:hover {
+            background-color: #45a049;
+        }
+        #status-message {
+            margin-top: 15px;
+            color: #d81b60;
+            font-weight: bold;
+        }
+        .sorry-message {
+            margin-top: 25px;
+            font-size: 1em;
+            padding: 15px;
+            background-color: #ffe0b2;
+            border-radius: 8px;
+            border: 2px dashed #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💖 Love Ka Waffle Ticket 💖</h1>
+        <h2>Unlimited Waffles. Unlimited Toppings. Unlimited Pyaar.</h2>
+        
+        <div class="ticket-detail">
+            <strong>FOR:</strong> <span class="detail-value">KAUSHIKEE</span>
+        </div>
+        
+        <div class="ticket-detail">
+            <strong>FROM:</strong> <span class="detail-value">Your Loving Boyfriend KUNAL</span>
+        </div>
+        
+        <div class="ticket-detail">
+            <strong>VALID FOR:</strong> <span class="detail-value">LIFETIME</span>
+        </div>
+
+        <div class="ticket-detail">
+            <strong>VALUE:</strong> <span class="detail-value">Priceless Waffles + Ek Badi Hug!</span>
+        </div>
+        
+        <div class="ticket-detail">
+            <strong>REDEEM AT:</strong> 
+            <input type="text" id="redeem-input" placeholder="Type here" oninput="toggleRedeemButton()">
+        </div>
+        
+        <button id="redeem-btn" onclick="redeemTicket()" disabled>CLAIM WAFFLES NOW! 🚀</button>
+        <div id="status-message"></div>
+
+        <div class="sorry-message">
+            <p><strong>Meri Jaan, I Am Sorry!</strong> Main janta hoon tum gussa ho, par tumhari smile mere liye sabse zyaada important hai. Please yeh ticket use karo aur hum saath mein waffles khate hain! Sab theek ho jayega.</p>
+            <p>Lots of Love, **KUNAL**</p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Function to enable/disable button
+        function toggleRedeemButton() {
+            const inputField = document.getElementById('redeem-input');
+            const redeemButton = document.getElementById('redeem-btn');
+            
+            // Agar input field mein kuch likha ho toh button enable hoga
+            if (inputField.value.trim().length > 0) {
+                redeemButton.disabled = false;
+            } else {
+                redeemButton.disabled = true;
+            }
+        }
+
+        // Function to redeem the ticket
+        function redeemTicket() {
+            const redeemLocation = document.getElementById('redeem-input').value;
+            const statusMessage = document.getElementById('status-message');
+            const redeemButton = document.getElementById('redeem-btn');
+            
+            // Redemption ka final message
+            statusMessage.innerHTML = `**CONGRATS!** Waffles aur Hug ${redeemLocation} par jaldi deliver honge! ❤️`;
+            
+            // Button aur Input ko disable karna
+            redeemButton.disabled = true;
+            redeemButton.innerText = "WAFFLES ON THE WAY! 😉";
+            document.getElementById('redeem-input').disabled = true;
+            
+            // Optional: Ek alert message
+            alert(`Ticket Successfully Claimed! Waffles for you at ${redeemLocation}!`);
+        }
+    </script>
+
+</body>
+</html>
